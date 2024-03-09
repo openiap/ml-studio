@@ -1,0 +1,268 @@
+/* .flowcontainer {
+  flex: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow: hidden
+}
+
+.data {
+  width: calc(100vb);
+}
+
+.basicflow {
+  height: calc(100vb - 100px);
+  width: calc(100vb + 200px);
+} */
+
+.flowcontainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: 85vh; /* Adjust to the full viewport height */
+  overflow: hidden;
+}
+
+.sidebar { /* Assuming you have a sidebar component */
+  flex: 0 0 15%; /* Adjust the width as necessary */
+  max-width: 200px; /* You can set a max-width if needed */
+  min-width: 200px; /* Minimum width */
+  /* Other styling as needed */
+}
+
+.resizer {
+  background: #ccc; /* A neutral color for the resizer */
+  cursor: ew-resize; /* Cursor indicating horizontal resizing */
+  width: 5px; /* Width of the resizer area */
+  height: 100%; /* Full height to match the container */
+  flex: 0 0 auto; /* Prevent the resizer from growing or shrinking */
+}
+.resizer2 {
+  background: #ccc; /* A neutral color for the resizer */
+  cursor: ew-resize; /* Cursor indicating horizontal resizing */
+  width: 5px; /* Width of the resizer area */
+  height: 100%; /* Full height to match the container */
+  flex: 0 0 auto; /* Prevent the resizer from growing or shrinking */
+}
+
+.basicflow {
+  flex: 1; /* Take up remaining space */
+  /* make 50px smaller at the button */
+
+  min-width: 100px; 
+  /* Other styling as needed */
+}
+
+
+body.dark .basicflow {
+  background: #57534e48;
+}
+
+.basicflow .controls {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size:12px;
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px; 
+}
+
+.basicflow .controls button {
+  padding: 4px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-transform:uppercase;
+  color:#fff;
+  -webkit-box-shadow:0px 5px 10px 0px rgba(0,0,0,.3);
+  box-shadow:0 5px 10px #0000004d;
+  cursor:pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.basicflow .controls button:hover {
+  opacity: 0.8;
+  transform: scale(102%);
+  transition: 0.25s all ease;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0px rgba(51, 166, 184, 0.7); }
+  100% { box-shadow: 0 0 0 10px rgba(51, 166, 184, 0); }
+}
+.vue-flow__node.selected > div:first-child {
+  /* border: 3px solid #20af4d; */
+  box-shadow: 0px 0px 10px #007bff; 
+  filter: brightness(110%);
+}
+body.dark .vue-flow__node.selected > div:first-child {
+  /* border: 3px solid #af2084; */
+  box-shadow: 0px 0px 10px #20af4d; 
+  filter: brightness(110%);
+}
+.vue-flow__node.highlight {
+  /* border: 2px solid #33a6b8; */
+  animation: pulse 0.50s ease-in-out;
+  animation-iteration-count: 1;
+}
+body.dark .vue-flow__node.highlight {
+  /* border: 3px solid #33a6b8; */
+}
+.vue-flow__node.error {
+  border: 2px solid #ff0000;
+  animation: pulse 0.50s ease-in-out;
+  animation-iteration-count: 1;
+}
+body.dark .vue-flow__node.error {
+  border: 3px solid #ff0000;
+}
+.vue-flow__node.animated {
+  animation: pulse 1s infinite ease-in-out;
+}
+
+.toolbox-node {
+  /* background: whitesmoke; */
+  border: 1px solid #777;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  max-width: 250px;
+  min-width: 150px;
+}
+
+body.dark .toolbox-node {
+  /* background: #292524; */
+  color: #fffffb;
+  border: 1px solid #777;
+}
+
+
+/* 
+body.dark .vue-flow__node {
+  border-radius: 10px;
+  background: none;
+  background: #292524;
+  color: #fffffb;
+  border: 1px solid #777;
+}
+.vue-flow__node {
+  border: 1px solid #777;
+  padding: 10px;
+  border-radius: 10px;
+  background: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  max-width: 250px
+}
+
+.vue-flow__node button {
+  padding: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, .3);
+  box-shadow: 0 5px 10px #0000004d;
+  cursor: pointer
+}
+
+.vue-flow__node button:hover {
+  opacity: .9;
+  transform: scale(105%);
+  transition: .25s all ease
+}
+
+
+
+
+.toolbox-node {
+  border: 1px solid #777;
+  padding: 10px;
+  border-radius: 10px;
+  background: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  max-width: 250px;
+  min-width: 150px;
+}
+
+body.dark .toolbox-node {
+  background: #292524;
+  color: #fffffb;
+  border: 1px solid #777;
+}
+
+
+body.dark .vue-flow__edge path {
+  stroke: #2dacc5;
+}
+.vue-flow__edge.selected path {
+  stroke-width: 2px;
+}
+body.dark .vue-flow__edge.selected path {
+  stroke: #a3e61f;
+  stroke-width: 3px;
+}
+
+.vue-flow__background pattern path {
+  stroke: #eeeeee;
+  stroke-width: 1px;
+}
+body.dark .vue-flow__background pattern path {
+  stroke: #242424;
+  stroke-width: 1px;
+}
+
+
+ */
+
+
+.error {
+  border: 1px solid #000;
+  background: rgba(255, 255, 255, 0.9);
+  background-color: #FF9933;
+}
+
+
+
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer; /* Changes the cursor to indicate that it's interactive */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px; /* Adjust width as needed */
+  background-color: black;
+  color: white;
+  text-align: left; /* Align text to left */
+  padding: 5px;
+  border-radius: 6px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+
+  /* Preserve new lines and spaces */
+  white-space: pre-wrap; 
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

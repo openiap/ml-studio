@@ -1,0 +1,61 @@
+{
+    "name": "ml-studio",
+    "version": "1.0.35",
+    "private": true,
+    "publishConfig": {
+        "access": "public"
+    },
+    "author": "OpenIAP ApS / Allan Zimmermann",
+    "license": "MPL-2.0",
+    "homepage": "https://github.com/openiap",
+    "funding": "https://github.com/sponsors/skadefro",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "compose": "npm run build && docker build -t cloudhack/vue3-template . && docker push cloudhack/vue3-template",
+        "generator": "npx vue-pwa-asset-generator -a logo.png",
+        "serveprod": "set NODE_ENV=production && vue-cli-service serve",
+        "updatejsapi": "npm uninstall @openiap/jsapi && npm i openiap/jsapi",
+        "updatejsapidev": "npm uninstall @openiap/jsapi && npm i ../jsapi"
+    },
+    "dependencies": {
+        "@imengyu/vue3-context-menu": "^1.3.5",
+        "@mdi/font": "^7.4.47",
+        "@openiap/jsapi": "github:openiap/jsapi",
+        "@skadefro/vue-shortkey": "^3.1.8",
+        "@vue-flow/background": "^1.2.0",
+        "@vue-flow/core": "^1.27.1",
+        "@vue-flow/minimap": "^1.4.0",
+        "@vue/cli-plugin-babel": "^5.0.8",
+        "@vue/cli-plugin-router": "^5.0.8",
+        "@vue/cli-plugin-typescript": "^5.0.8",
+        "@vue/cli-plugin-vuex": "^5.0.8",
+        "@vue/cli-service": "^5.0.8",
+        "chart.js": "^4.4.1",
+        "core-js": "^3.8.3",
+        "express": "^4.18.2",
+        "monaco-editor": "^0.45.0",
+        "monaco-editor-webpack-plugin": "^7.1.0",
+        "plotly.js-dist-min": "^2.28.0",
+        "register-service-worker": "^1.7.2",
+        "tiny-emitter": "^2.1.0",
+        "typescript": "^5.3.3",
+        "uil": "^4.3.0",
+        "vue": "^3.4.15",
+        "vue-debounce": "^4.0.0",
+        "vue-oidc-client": "^1.0.0-alpha.4",
+        "vue-router": "^4.0.3",
+        "vue-shortkey": "file:../vue-shortkey",
+        "vue3-easy-data-table": "^1.5.0",
+        "vuedraggable": "^4.1.0",
+        "vuetify": "^3.5.2",
+        "vuex": "^4.1.0"
+    },
+    "openiap": {
+        "language": "nodejs",
+        "typescript": true,
+        "daemon": true,
+        "chromium": false
+    },
+    "main": "serve.js"
+}
